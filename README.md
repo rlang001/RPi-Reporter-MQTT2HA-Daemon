@@ -122,7 +122,7 @@ MQTT is huge help in connecting different parts of your smart home and setting u
 ## Installation
 
 On a modern Linux system just a few steps are needed to get the daemon working.
-The following example shows the installation under Debian/Raspbian below the `/opt` directory:
+The following example shows the installation under Debian/Raspbian below the user home directory:
 
 First install extra packages the script needs (select one of the two following commands)
 
@@ -197,11 +197,21 @@ Now that the extra packages are installed let's install our script and any remai
 # Get a copy of the repository
 sudo git clone https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon.git /opt/RPi-Reporter-MQTT2HA-Daemon
 
+# Get a copy of the repository
+git clone https://github.com/rlang001/RPi-Reporter-MQTT2HA-Daemon.git ~/RPi-Reporter-MQTT2HA-Daemon/app
+
+# Activate it - 
+source ~/RPi-Reporter-MQTT2HA-Daemon/bin/activate
+
 # move into your new local repository
-cd /opt/RPi-Reporter-MQTT2HA-Daemon
+cd ~/RPi-Reporter-MQTT2HA-Daemon/app
 
 # (NEW) Move to the latest official release:
 sudo git checkout v1.8.5 # (you want to replace v1.8.5 with the latest if this isn't)
+
+# Now install the requirements
+pip install -r requirements.txt
+
 
 # Make sure any script requirement are installed (if they aren't aready)
 sudo pip3 install -r requirements.txt
