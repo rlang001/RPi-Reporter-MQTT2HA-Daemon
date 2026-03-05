@@ -212,9 +212,6 @@ sudo git checkout v1.8.5 # (you want to replace v1.8.5 with the latest if this i
 # Now install the requirements
 pip install -r requirements.txt
 
-
-# Make sure any script requirement are installed (if they aren't aready)
-sudo pip3 install -r requirements.txt
 ```
 
 **WARNING:** If you choose to install these files in a location other than `/opt/RPi-Reporter-MQTT2HA-Daemon`, you will need to modify some of the control files which are used when setting up to run this script automatically. The following files:
