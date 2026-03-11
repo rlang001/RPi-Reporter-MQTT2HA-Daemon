@@ -254,7 +254,7 @@ username = {your mqtt username if your setup requires one}
 password = {your mqtt password if your setup requires one}
 
 ```
-
+Set the permissions on the config file
 ```shell
 sudo chown root:daemon /opt/RPi-Reporter-MQTT2HA-Daemon/app/config.ini
 sudo chmod 640 /opt/RPi-Reporter-MQTT2HA-Daemon/app/config.ini
@@ -324,7 +324,9 @@ Let's look at how to set up each of these forms:
 Set up the script to be run as a system service as follows:
 
 ```shell
-sudo ln -s /opt/RPi-Reporter-MQTT2HA-Daemon/isp-rpi-reporter.service /etc/systemd/system/isp-rpi-reporter.service
+
+sudo mkdir -p /usr/local/lib/systemd/system/
+sudo ln -s /opt/RPi-Reporter-MQTT2HA-Daemon/app/isp-rpi-reporter.service /usr/local/lib/systemd/system/
 
 sudo systemctl daemon-reload
 
