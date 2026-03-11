@@ -194,11 +194,17 @@ Now that the extra packages are installed let's install our script and any remai
 **--> NEW!! These instructions adjusted to use the latest released version! See ["Why"](#why-are-we-checking-out-the-latest-release) below.**
 
 ```shell
-# Get a copy of the repository
-sudo git clone https://github.com/ironsheep/RPi-Reporter-MQTT2HA-Daemon.git /opt/RPi-Reporter-MQTT2HA-Daemon
+
+# Create the python virtual environment
+sudo python -m venv /opt/RPi-Reporter-MQTT2HA-Daemon
 
 # Get a copy of the repository
-git clone https://github.com/rlang001/RPi-Reporter-MQTT2HA-Daemon.git ~/RPi-Reporter-MQTT2HA-Daemon/app
+sudo git clone https://github.com/rlang001/RPi-Reporter-MQTT2HA-Daemon.git /opt/RPi-Reporter-MQTT2HA-Daemon/app
+
+
+
+# (NEW) Move to the latest official release:
+sudo git checkout v1.9.0 # (you want to replace v1.9.0 with the latest if this isn't)
 
 # Activate it - 
 source ~/RPi-Reporter-MQTT2HA-Daemon/bin/activate
@@ -210,7 +216,10 @@ cd ~/RPi-Reporter-MQTT2HA-Daemon/app
 sudo git checkout v1.8.5 # (you want to replace v1.8.5 with the latest if this isn't)
 
 # Now install the requirements
-pip install -r requirements.txt
+sudo /opt/RPi-Reporter-MQTT2HA-Daemon/bin/pip install -r /opt/RPi-Reporter-MQTT2HA-Daemon/app/requirements.txt
+
+# Modify the service file
+sudo sed -i '/^ExecStart=/ s/usr\/bin/opt\/RPi-Reporter-MQTT2HA-Daemon\/bin/; s/ISP-RPi-mqtt-daemon.py/app\/ISP-RPi-mqtt-daemon.py/; /^WorkingDirectory/ s/$/app\//' /opt/RPi-Reporter-MQTT2HA-Daemon/app/isp-rpi-reporter.service
 
 ```
 
