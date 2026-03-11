@@ -588,6 +588,8 @@ def getDeviceModel():
 
 def getLinuxRelease():
     global rpi_linux_release
+
+    # Placeholder
     stdout, _, returncode = invoke_shell_cmd(
         "/bin/cat /etc/apt/sources.list | /bin/egrep -v '#' | /usr/bin/awk '{ print $3 }' | /bin/sed -e 's/-/ /g' | /usr/bin/cut -f1 -d' ' | /bin/grep . | /usr/bin/sort -u")
     rpi_linux_release = 'N/A'
