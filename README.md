@@ -223,12 +223,6 @@ sudo sed -i '/^ExecStart=/ s/usr\/bin/opt\/RPi-Reporter-MQTT2HA-Daemon\/bin/; s/
 
 ```
 
-**WARNING:** If you choose to install these files in a location other than `/opt/RPi-Reporter-MQTT2HA-Daemon`, you will need to modify some of the control files which are used when setting up to run this script automatically. The following files:
-
-- **rpi-reporter** - Sys V init script
-- **isp-rpi-reporter.service** - Systemd Daemon / Service description file
-
-... need to have any mention of `/opt/RPi-Reporter-MQTT2HA-Daemon` changed to your install location **before you can run this script as a service.**
 
 #### Why are we checking-out the latest release?
 
@@ -260,6 +254,12 @@ username = {your mqtt username if your setup requires one}
 password = {your mqtt password if your setup requires one}
 
 ```
+
+```shell
+sudo chown root:daemon /opt/RPi-Reporter-MQTT2HA-Daemon/app/config.ini
+sudo chmod 640 /opt/RPi-Reporter-MQTT2HA-Daemon/app/config.ini
+```
+
 
 Now that your config.ini is setup let's test!
 
