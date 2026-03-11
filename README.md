@@ -201,19 +201,8 @@ sudo python -m venv /opt/RPi-Reporter-MQTT2HA-Daemon
 # Get a copy of the repository
 sudo git clone https://github.com/rlang001/RPi-Reporter-MQTT2HA-Daemon.git /opt/RPi-Reporter-MQTT2HA-Daemon/app
 
-
-
 # (NEW) Move to the latest official release:
 sudo git checkout v1.9.0 # (you want to replace v1.9.0 with the latest if this isn't)
-
-# Activate it - 
-source ~/RPi-Reporter-MQTT2HA-Daemon/bin/activate
-
-# move into your new local repository
-cd ~/RPi-Reporter-MQTT2HA-Daemon/app
-
-# (NEW) Move to the latest official release:
-sudo git checkout v1.8.5 # (you want to replace v1.8.5 with the latest if this isn't)
 
 # Now install the requirements
 sudo /opt/RPi-Reporter-MQTT2HA-Daemon/bin/pip install -r /opt/RPi-Reporter-MQTT2HA-Daemon/app/requirements.txt
