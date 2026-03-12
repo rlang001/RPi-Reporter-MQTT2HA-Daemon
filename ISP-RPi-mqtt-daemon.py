@@ -589,11 +589,11 @@ def getDeviceModel():
 def getLinuxRelease():
     global rpi_linux_release
 
-    # Placeholder
+    # Cleaned up os-relaease to get from /etc/os-release
     stdout, _, returncode = invoke_shell_cmd(
-        "/bin/cat /etc/apt/sources.list | /bin/egrep -v '#' | /usr/bin/awk '{ print $3 }' | /bin/sed -e 's/-/ /g' | /usr/bin/cut -f1 -d' ' | /bin/grep . | /usr/bin/sort -u")
-
-     # cat /etc/os-release | grep  VERSION_CODENAME | awk -F '=' '{print $2}'
+        "/bin/cat /etc/os-release | /bin/grep PRETTY_NAME | /usr/bin/awk -F '=' '{print $2}' | /usr/bin/tr -d '\"' ")
+    
+        # "/bin/cat /etc/apt/sources.list | /bin/egrep -v '#' | /usr/bin/awk '{ print $3 }' | /bin/sed -e 's/-/ /g' | /usr/bin/cut -f1 -d' ' | /bin/grep . | /usr/bin/sort -u")
     rpi_linux_release = 'N/A'
     if not returncode:
         rpi_linux_release = stdout.decode('utf-8').rstrip()
